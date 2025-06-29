@@ -25,11 +25,14 @@
     zellij
     kubectl
 
+    nerd-fonts.hack
     htop
     obsidian
     onlyoffice-bin
     telegram-desktop
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.git = {
     enable = true;
@@ -49,6 +52,13 @@
         ];
         identitiesOnly = true;
       };
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
     };
   };
 
