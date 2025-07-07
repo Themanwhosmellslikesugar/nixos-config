@@ -5,8 +5,16 @@ My config for the working environment.
 To use this config:
 
 ```bash
-git clone https://github.com/estromenko/nixos-config ~/nixos-config
+git clone https://github.com/Themanwhosmellslikesugar/nixos-config.git ~/nixos-config
 sudo nixos-rebuild switch --flake ~/nixos-config
+```
+
+To enable flake add this to `/etc/nixos/configuration.nix`:
+
+```nix
+nix.extraOptions = ''
+  experimental-features = nix-command flakes
+'';
 ```
 
 To modify this config:
