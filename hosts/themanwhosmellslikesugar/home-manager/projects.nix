@@ -6,7 +6,8 @@
 }:
 let
   projectsDir = "${config.home.homeDirectory}/Projects";
-in {
+in
+{
   home.activation.kubeconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     install -Dm600 /run/agenix/kubeconfig "/home/themanwhosmellslikesugar/.kube/config"
   '';

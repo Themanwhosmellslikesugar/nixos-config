@@ -16,7 +16,10 @@
       options = "--delete-older-than 7d";
     };
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
   };
@@ -35,7 +38,12 @@
 
   services.nextdns = {
     enable = true;
-    arguments = [ "-config" "10.0.3.0/24=abcdef" "-cache-size" "10MB" ];
+    arguments = [
+      "-config"
+      "10.0.3.0/24=abcdef"
+      "-cache-size"
+      "10MB"
+    ];
   };
 
   # Set your time zone.
@@ -95,7 +103,11 @@
   users.users.themanwhosmellslikesugar = {
     isNormalUser = true;
     description = "themanwhosmellslikesugar";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     shell = pkgs.fish;
   };
 
@@ -131,14 +143,16 @@
 
   home-manager.backupFileExtension = "backup";
 
-  home-manager.extraSpecialArgs = {inherit inputs;};
-  home-manager.users.themanwhosmellslikesugar = {...}: {
-    imports = [
-      ./home-manager/home.nix
-      inputs.agenix.homeManagerModules.default
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
-  };
+  home-manager.extraSpecialArgs = { inherit inputs; };
+  home-manager.users.themanwhosmellslikesugar =
+    { ... }:
+    {
+      imports = [
+        ./home-manager/home.nix
+        inputs.agenix.homeManagerModules.default
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+      ];
+    };
 
   system.stateVersion = "25.05";
 }

@@ -1,7 +1,16 @@
-{ ...}: {
+{ ... }:
+{
   programs.zed-editor = {
     enable = true;
-    extensions = ["nix" "python" "dockerfile" "yaml" "toml" "elixir" "sql"];
+    extensions = [
+      "nix"
+      "python"
+      "dockerfile"
+      "yaml"
+      "toml"
+      "elixir"
+      "sql"
+    ];
     userSettings = {
       telemetry = {
         metrics = false;
@@ -15,20 +24,26 @@
       ui_font_size = 14;
       buffer_font_size = 14;
 
-      wrap_guides = [100];
+      wrap_guides = [ 100 ];
 
       load_direnv = "shell_hook";
       languages = {
         "Python" = {
-          "language_servers" = ["pyright"];
+          "language_servers" = [ "pyright" ];
         };
         "Elixir" = {
-          language_servers = ["!lexical" "elixir-ls"];
+          language_servers = [
+            "!lexical"
+            "elixir-ls"
+          ];
           show_edit_predictions = true;
           format_on_save = "off";
         };
         "HEEX" = {
-          language_servers = ["!lexical" "elixir-ls"];
+          language_servers = [
+            "!lexical"
+            "elixir-ls"
+          ];
           format_on_save = "off";
         };
       };
@@ -62,13 +77,25 @@
       {
         context = "Editor";
         bindings = {
-          "ctrl-right" = ["editor::MoveToEndOfLine" {"stop_at_soft_wraps" = true;}];
+          "ctrl-right" = [
+            "editor::MoveToEndOfLine"
+            { "stop_at_soft_wraps" = true; }
+          ];
           "ctrl-left" = [
             "editor::MoveToBeginningOfLine"
-            { "stop_at_soft_wraps" = true; "stop_at_indent" = true; }
+            {
+              "stop_at_soft_wraps" = true;
+              "stop_at_indent" = true;
+            }
           ];
-          "ctrl-shift-alt-s" = ["editor::SortLinesCaseSensitive" {}];
-          "ctrl-shift-alt-i" = ["editor::SortLinesCaseInsensitive" {}];
+          "ctrl-shift-alt-s" = [
+            "editor::SortLinesCaseSensitive"
+            { }
+          ];
+          "ctrl-shift-alt-i" = [
+            "editor::SortLinesCaseInsensitive"
+            { }
+          ];
         };
       }
       {

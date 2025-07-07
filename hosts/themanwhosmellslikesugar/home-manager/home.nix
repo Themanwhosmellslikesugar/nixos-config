@@ -2,8 +2,14 @@
   pkgs,
   lib,
   ...
-}: {
-  imports = [ ./plasma.nix ./firefox.nix ./zed.nix ./projects.nix ];
+}:
+{
+  imports = [
+    ./plasma.nix
+    ./firefox.nix
+    ./zed.nix
+    ./projects.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -75,7 +81,7 @@
     '';
   };
 
-  home.activation.completions = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.completions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.config/fish/completions
     ${pkgs.uv}/bin/uv generate-shell-completion fish > ~/.config/fish/completions/uv.fish
   '';

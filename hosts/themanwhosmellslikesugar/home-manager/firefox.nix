@@ -1,7 +1,8 @@
 {
   lib,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
 
@@ -10,10 +11,10 @@
         force = true;
         default = "ddg";
         privateDefault = "ddg";
-        order = ["ddg"];
+        order = [ "ddg" ];
       };
 
-      bookmarks = {};
+      bookmarks = { };
       settings = {
         "browser.startup.homepage" = "about:home";
 
@@ -98,9 +99,9 @@
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = [ "firefox.desktop" ];
+    "text/xml" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
 }

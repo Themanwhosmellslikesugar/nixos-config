@@ -22,34 +22,40 @@
     };
   };
 
-  outputs = {nixpkgs,...} @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    formatter.${system} = pkgs.alejandra;
+  outputs =
+    { nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      formatter.${system} = pkgs.alejandra;
 
-    nixosConfigurations."themanwhosmellslikesugar-MG" = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/themanwhosmellslikesugar/configuration.nix
-        ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
-        inputs.agenix.nixosModules.default
-      ];
+      nixosConfigurations."themanwhosmellslikesugar-MG" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/themanwhosmellslikesugar/configuration.nix
+          ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
+          inputs.agenix.nixosModules.default
+        ];
+      };
+
+      homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          inputs.agenix.homeManagerModules.default
+          ./hosts/themanwhosmellslikesugar/home-manager/home.nix
+          inputs.plasma-manager.homeManagerModules.plasma-manager
+        ];
+
+        extraSpecialArgs = { inherit inputs; };
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        packages = with pkgs; [
+          nil
+          nixd
+        ];
+      };
     };
-
-    homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        inputs.agenix.homeManagerModules.default
-        ./hosts/themanwhosmellslikesugar/home-manager/home.nix
-        inputs.plasma-manager.homeManagerModules.plasma-manager
-      ];
-
-      extraSpecialArgs = {inherit inputs;};
-    };
-
-    devShells.${system}.default = pkgs.mkShell {
-      packages = with pkgs; [nil nixd];
-    };
-  };
 }
