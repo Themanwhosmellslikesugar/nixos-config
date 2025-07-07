@@ -12,6 +12,10 @@
     }
   ];
 
+  programs.plasma.shortcuts = {
+    "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Space";
+  };
+
   programs.plasma.workspace.lookAndFeel = "org.kde.breezedark.desktop";
   programs.plasma.input.touchpads = [
     {
