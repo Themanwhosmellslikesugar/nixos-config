@@ -115,7 +115,6 @@
   documentation.man.generateCaches = false;
 
   environment.systemPackages = with pkgs; [
-    inputs.agenix.packages."${system}".default
     vim
   ];
 
@@ -138,7 +137,6 @@
     {
       imports = [
         ./home-manager/home.nix
-        inputs.agenix.homeManagerModules.default
         inputs.plasma-manager.homeManagerModules.plasma-manager
       ];
     };
