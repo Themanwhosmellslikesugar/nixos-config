@@ -6,6 +6,7 @@
 }:
 let
   projectsDir = "${config.home.homeDirectory}/Projects";
+  documentsDir = "${config.home.homeDirectory}/Documents";
 in
 {
   home.activation.cloneRepos = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -20,8 +21,20 @@ in
       ${pkgs.git}/bin/git clone git@gitlab-yc.myradius.ru:myradius/backend/platform-survey.git ${projectsDir}/radius/platform-survey
     fi
 
+    if [ ! -d "${projectsDir}/radius/platform-middleware" ]; then
+      ${pkgs.git}/bin/git clone git@gitlab-yc.myradius.ru:myradius/backend/platform-middleware.git ${projectsDir}/radius/platform-middleware
+    fi
+
+    if [ ! -d "${projectsDir}/radius/app-chart" ]; then
+      ${pkgs.git}/bin/git clone git@gitlab-yc.myradius.ru:myradius/app-chart.git ${projectsDir}/radius/app-chart
+    fi
+
     if [ ! -d "${projectsDir}/cusdeb/hammett" ]; then
       ${pkgs.git}/bin/git clone git@github.com:cusdeb-com/hammett.git ${projectsDir}/cusdeb/hammett
+    fi
+
+    if [ ! -d "${documentsDir}/mind-db" ]; then
+      ${pkgs.git}/bin/git clone git@github.com:Themanwhosmellslikesugar/mind-db.git ${documentsDir}/mind-db
     fi
   '';
 
