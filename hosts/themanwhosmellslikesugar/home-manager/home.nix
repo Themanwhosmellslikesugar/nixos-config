@@ -32,7 +32,7 @@
     kubectl
 
     nerd-fonts.hack
-    htop
+    btop
     obsidian
     onlyoffice-bin
     telegram-desktop

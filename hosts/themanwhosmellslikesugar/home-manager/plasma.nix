@@ -1,5 +1,7 @@
-{ ... }:
+{ config, ... }:
 {
+  home.file."Pictures/wallpaper.jpg".source = ./assets/wallpaper.jpg;
+
   programs.plasma.enable = true;
   programs.plasma.immutableByDefault = true;
 
@@ -16,7 +18,11 @@
     "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Space";
   };
 
-  programs.plasma.workspace.lookAndFeel = "org.kde.breezedark.desktop";
+  programs.plasma.workspace = {
+    wallpaper = "${config.home.homeDirectory}/Pictures/wallpaper.jpg";
+    lookAndFeel = "org.kde.breezedark.desktop";
+  };
+
   programs.plasma.input.touchpads = [
     {
       enable = true;
