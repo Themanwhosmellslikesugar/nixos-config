@@ -9,12 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "";
-    };
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,14 +30,12 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
-          inputs.agenix.nixosModules.default
         ];
       };
 
       homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          inputs.agenix.homeManagerModules.default
           ./hosts/themanwhosmellslikesugar/home-manager/home.nix
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];

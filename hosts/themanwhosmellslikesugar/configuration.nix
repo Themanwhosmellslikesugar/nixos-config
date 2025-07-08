@@ -115,7 +115,6 @@
   documentation.man.generateCaches = false;
 
   environment.systemPackages = with pkgs; [
-    age
     inputs.agenix.packages."${system}".default
     vim
   ];
@@ -130,16 +129,6 @@
   };
 
   networking.firewall.enable = true;
-
-  age = {
-    identityPaths = [ "/home/themanwhosmellslikesugar/.config/age/keys.txt" ];
-    secrets = {
-      kubeconfig = {
-        file = ./home-manager/secrets/kubeconfig.age;
-        owner = "themanwhosmellslikesugar";
-      };
-    };
-  };
 
   home-manager.backupFileExtension = "backup";
 

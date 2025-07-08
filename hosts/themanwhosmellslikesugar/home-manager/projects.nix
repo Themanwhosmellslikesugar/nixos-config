@@ -8,10 +8,6 @@ let
   projectsDir = "${config.home.homeDirectory}/Projects";
 in
 {
-  home.activation.kubeconfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    install -Dm600 /run/agenix/kubeconfig "/home/themanwhosmellslikesugar/.kube/config"
-  '';
-
   home.activation.cloneRepos = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ${projectsDir}
     export PATH=${pkgs.openssh}/bin:${pkgs.git}/bin:$PATH
