@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-stable, inputs, ... }:
 
 {
   imports = [
@@ -82,7 +82,11 @@
 
   virtualisation.docker.enable = true;
 
-  programs.amnezia-vpn.enable = true;
+  programs.amnezia-vpn = {
+    enable = true;
+    package = pkgs-stable.amnezia-vpn;
+  };
+
   programs.nix-ld.enable = true;
   programs.fish.enable = true;
   programs.firefox.enable = true;
