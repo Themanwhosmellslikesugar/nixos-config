@@ -15,7 +15,11 @@
   ];
 
   programs.plasma.shortcuts = {
-    "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Space";
+    "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = [
+      "Meta+Space"
+      "Meta+Alt+K"
+      "Switch to Next Keyboard Layout"
+    ];
   };
 
   programs.plasma.workspace = {
