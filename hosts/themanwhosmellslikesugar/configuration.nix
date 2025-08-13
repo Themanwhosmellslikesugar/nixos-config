@@ -34,7 +34,12 @@
   networking.hostName = "themanwhosmellslikesugar-MG"; # Define your hostname.
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-l2tp
+    ];
+  };
 
   services.nextdns = {
     enable = true;
