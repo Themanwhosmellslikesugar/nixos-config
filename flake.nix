@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,6 +36,7 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
+          inputs.chaotic.nixosModules.default
         ];
       };
 
@@ -44,6 +46,7 @@
 
         modules = [
           ./hosts/themanwhosmellslikesugar/home-manager/home.nix
+          inputs.chaotic.nixosModules.default
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
 

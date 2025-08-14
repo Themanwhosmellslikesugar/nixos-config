@@ -5,6 +5,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 
@@ -22,7 +23,16 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [
+    "mitigations=off"
+  ];
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.extraModulePackages = [ ];
+
+  boot.tmp = {
+    cleanOnBoot = true;
+    useTmpfs = true;
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c72bbfbc-0fdf-4c67-87e1-30bc9748b3f8";
@@ -37,6 +47,9 @@
       "dmask=0077"
     ];
   };
+
+  zramSwap.enable = true;
+  services.scx.enable = true;
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/78a3c734-3807-4edf-b7cb-cc15d1b46f45"; }
