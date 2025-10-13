@@ -47,6 +47,11 @@
     extraConfig.init.defaultBranch = "master";
   };
 
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+  };
+
   programs.ssh = {
     enable = true;
     matchBlocks = {
