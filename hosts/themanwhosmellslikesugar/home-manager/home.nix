@@ -36,6 +36,7 @@
     obsidian
     onlyoffice-bin
     telegram-desktop
+    chromium
   ];
 
   fonts.fontconfig.enable = true;
