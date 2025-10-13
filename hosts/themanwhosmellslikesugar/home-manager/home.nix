@@ -56,8 +56,13 @@
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       "*" = {
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPersist = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
         identityFile = [
           "~/.ssh/id_ed25519"
           "~/.ssh/id_radius_v2_ed25519"
