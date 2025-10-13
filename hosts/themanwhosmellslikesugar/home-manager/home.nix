@@ -45,6 +45,7 @@
     userEmail = "tmwsls12@gmail.com";
     userName = "Dmitriy Ivanko";
     extraConfig.init.defaultBranch = "master";
+    extraConfig.branch.sort = "-committerdate";
   };
 
   programs.vscode = {
