@@ -45,7 +45,7 @@
 
         modules = [
           ./hosts/themanwhosmellslikesugar/home-manager/home.nix
-          inputs.plasma-manager.homeManagerModules.plasma-manager
+          inputs.plasma-manager.homeModules.plasma-manager
         ];
 
         extraSpecialArgs = { inherit inputs; };
