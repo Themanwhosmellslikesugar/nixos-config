@@ -60,6 +60,7 @@
           "~/.ssh/id_ed25519"
           "~/.ssh/id_radius_v2_ed25519"
           "~/.ssh/id_rsa"
+          "~/.ssh/radiusvm"
         ];
         identitiesOnly = true;
       };
