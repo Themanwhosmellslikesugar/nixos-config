@@ -42,11 +42,9 @@
 
       homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        inherit pkgs-stable;
 
         modules = [
           ./hosts/themanwhosmellslikesugar/home-manager/home.nix
-          inputs.chaotic.nixosModules.default
           inputs.plasma-manager.homeManagerModules.plasma-manager
         ];
 
