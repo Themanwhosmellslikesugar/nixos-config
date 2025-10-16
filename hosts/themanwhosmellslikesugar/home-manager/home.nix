@@ -27,9 +27,12 @@
     gnumake
     openvpn
     uv
+    ty
     k9s
     zellij
     kubectl
+    nixd
+    nil
 
     nerd-fonts.hack
     bottom
