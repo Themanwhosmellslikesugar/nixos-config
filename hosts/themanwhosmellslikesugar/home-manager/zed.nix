@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.zed-editor = {
     enable = true;
@@ -29,7 +29,7 @@
       load_direnv = "shell_hook";
       languages = {
         "Python" = {
-          "language_servers" = [ "pyright" ];
+          "language_servers" = [ "ty" "ruff" ];
         };
         "Elixir" = {
           language_servers = [
@@ -51,6 +51,18 @@
       lsp = {
         "lexical" = {
           enable_lsp_tasks = true;
+        };
+        "ty" = {
+          binary = {
+            path = "${pkgs.ty}/bin/ty";
+            arguments = ["server"];
+          };
+        };
+        "ruff" = {
+          binary = {
+            path = "${pkgs.ruff}/bin/ruff";
+            arguments = ["server"];
+          };
         };
       };
 
