@@ -110,21 +110,6 @@
           ];
         };
       }
-      {
-        "context" = "(Workspace && keyboard_layout == Russian) > Pane > Editor";
-        "bindings" = {
-          "ctrl-cyrillic_es" = "editor::Copy";
-          "ctrl-cyrillic_em" = "editor::Paste";
-          "ctrl-cyrillic_che" = "editor::Cut";
-          "ctrl-cyrillic_ef" = "editor::SelectAll";
-          "ctrl-cyrillic_ya" = "editor::Undo";
-          "ctrl-shift-cyrillic_ya" = "editor::Redo";
-          "ctrl-cyrillic_en" = "editor::Redo";
-          "ctrl-cyrillic_a" = "buffer_search::Deploy";
-          "ctrl-ukrainian_i" = "workspace::Save";
-          "ctrl-." = "editor::ToggleComments";
-        };
-      }
     ];
   };
 }
