@@ -45,11 +45,13 @@
   fonts.fontconfig.enable = true;
 
   programs.git = {
+    settings = {
+      user.email = "tmwsls12@gmail.com";
+      user.name = "Dmitriy Ivanko";
+      init.defaultBranch = "master";
+      branch.sort = "-committerdate";
+    };
     enable = true;
-    userEmail = "tmwsls12@gmail.com";
-    userName = "Dmitriy Ivanko";
-    extraConfig.init.defaultBranch = "master";
-    extraConfig.branch.sort = "-committerdate";
   };
 
   programs.vscode = {
