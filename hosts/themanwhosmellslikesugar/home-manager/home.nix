@@ -47,7 +47,7 @@
   programs.git = {
     settings = {
       user.email = "tmwsls12@gmail.com";
-      user.name = "Dmitriy Ivanko";
+      user.name = "Dmitrii Ivanko";
       init.defaultBranch = "master";
       branch.sort = "-committerdate";
     };
