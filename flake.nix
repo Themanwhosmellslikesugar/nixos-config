@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/e6f23dc08d3624daab7094b701aa3954923c6bbb";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
@@ -19,11 +18,10 @@
   };
 
   outputs =
-    { nixpkgs, nixpkgs-stable, ... }@inputs:
+    { nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     in
     {
       formatter.${system} = pkgs.alejandra;
@@ -31,7 +29,6 @@
       nixosConfigurations."themanwhosmellslikesugar-MG" = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
-          inherit pkgs-stable;
         };
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix

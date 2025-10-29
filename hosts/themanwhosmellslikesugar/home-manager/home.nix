@@ -40,6 +40,7 @@
     onlyoffice-bin
     telegram-desktop
     chromium
+    v2rayn
   ];
 
   fonts.fontconfig.enable = true;
@@ -73,6 +74,7 @@
           "~/.ssh/id_radius_v2_ed25519"
           "~/.ssh/id_rsa"
           "~/.ssh/radiusvm"
+          "~/.ssh/id_ed25519_secondary"
         ];
         identitiesOnly = true;
       };

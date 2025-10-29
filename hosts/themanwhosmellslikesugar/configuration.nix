@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, pkgs-stable, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -31,24 +31,20 @@
   services.earlyoom.enable = true;
   services.scx.enable = true;
 
-  networking.hostName = "themanwhosmellslikesugar-MG"; # Define your hostname.
+  services.resolved.enable = true;
 
-  # Enable networking
-  networking.networkmanager = {
-    enable = true;
-    plugins = with pkgs; [
-      networkmanager-l2tp
-    ];
-  };
+  networking = {
+    hostName = "themanwhosmellslikesugar-MG";
+    firewall.enable = true;
+    nameservers = ["8.8.8.8" "1.1.1.1"];
 
-  services.nextdns = {
-    enable = true;
-    arguments = [
-      "-config"
-      "10.0.3.0/24=abcdef"
-      "-cache-size"
-      "10MB"
-    ];
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+      plugins = with pkgs; [
+        networkmanager-l2tp
+      ];
+    };
   };
 
   # Set your time zone.
@@ -86,11 +82,6 @@
   };
 
   virtualisation.docker.enable = true;
-
-  programs.amnezia-vpn = {
-    enable = true;
-    package = pkgs-stable.amnezia-vpn;
-  };
 
   programs.nix-ld.enable = true;
   programs.fish.enable = true;
@@ -135,8 +126,6 @@
   environment.etc = {
     "strongswan.conf".text = "";
   };
-
-  networking.firewall.enable = true;
 
   home-manager.backupFileExtension = "backup";
 
