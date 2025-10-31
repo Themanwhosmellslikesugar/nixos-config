@@ -37,7 +37,7 @@
     nerd-fonts.hack
     bottom
     obsidian
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     telegram-desktop
     chromium
     v2rayn
