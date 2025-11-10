@@ -33,16 +33,20 @@
         };
         "Elixir" = {
           language_servers = [
+            "expert"
+            "!elixir-ls"
+            "!next-ls"
             "!lexical"
-            "elixir-ls"
           ];
           show_edit_predictions = true;
           format_on_save = "off";
         };
         "HEEX" = {
           language_servers = [
+            "expert"
+            "!elixir-ls"
+            "!next-ls"
             "!lexical"
-            "elixir-ls"
           ];
           format_on_save = "off";
         };
@@ -82,6 +86,7 @@
         "node_modules"
         "test_db.sql"
         ".ropeproject"
+        ".expert"
       ];
     };
 
