@@ -96,7 +96,11 @@
 
   programs.fish = {
     enable = true;
+    # Add completions manually due to a bug
+    # https://github.com/nix-community/home-manager/issues/8178
     interactiveShellInit = ''
+      set -p fish_complete_path ${pkgs.fish}/share/fish/completions
+
       set fish_greeting
     '';
   };
