@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,7 +33,6 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
-          inputs.chaotic.nixosModules.default
         ];
       };
 

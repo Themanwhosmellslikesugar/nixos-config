@@ -3,6 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 {
   config,
+  inputs,
   lib,
   modulesPath,
   pkgs,
@@ -13,6 +14,8 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+
+  nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
@@ -26,7 +29,7 @@
   boot.kernelParams = [
     "mitigations=off"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
   boot.extraModulePackages = [ ];
 
   boot.tmp = {
