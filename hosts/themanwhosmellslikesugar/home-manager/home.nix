@@ -41,6 +41,7 @@
     telegram-desktop
     chromium
     v2rayn
+    krita
   ];
 
   fonts.fontconfig.enable = true;
