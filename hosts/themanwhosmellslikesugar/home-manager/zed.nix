@@ -70,6 +70,16 @@
         };
       };
 
+      agent = {
+        default_profile = "write";
+        default_model = {
+          provider = "openrouter";
+          model = "openai/gpt-5.1-codex";
+        };
+        favorite_models = [];
+        model_parameters = [];
+      };
+
       file_scan_exclusions = [
         "_build"
         ".vscode"
