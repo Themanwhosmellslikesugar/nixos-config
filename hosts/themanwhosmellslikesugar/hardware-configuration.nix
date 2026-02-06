@@ -28,6 +28,9 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [
     "mitigations=off"
+    # Avoid touchpad click to tap (clickpad) bug. For more detail see:
+    # https://wiki.archlinux.org/title/Touchpad_Synaptics#Touchpad_does_not_work_after_resuming_from_hibernate/suspend
+    "psmouse.synaptics_intertouch=0"
   ];
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
   boot.extraModulePackages = [ ];
