@@ -75,6 +75,7 @@
           "~/.ssh/id_rsa"
           "~/.ssh/radiusvm"
           "~/.ssh/id_ed25519_secondary"
+          "~/.ssh/honey_property"
         ];
         identitiesOnly = true;
       };
