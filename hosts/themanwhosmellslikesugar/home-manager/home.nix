@@ -8,7 +8,6 @@
     ./plasma.nix
     ./firefox.nix
     ./zed.nix
-    ./projects.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
