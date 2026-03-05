@@ -33,6 +33,7 @@
     nixd
     nil
 
+    comma
     nerd-fonts.hack
     bottom
     obsidian
