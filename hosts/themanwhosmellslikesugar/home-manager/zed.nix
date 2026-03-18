@@ -79,25 +79,6 @@
         favorite_models = [];
         model_parameters = [];
       };
-
-      file_scan_exclusions = [
-        "_build"
-        ".vscode"
-        ".lexical"
-        ".elixir_ls"
-        ".coverage"
-        ".venv"
-        ".pytest_cache/"
-        ".mypy_cache/"
-        ".ruff_cache"
-        ".git/"
-        ".idea"
-        "**/__pycache__"
-        "node_modules"
-        "test_db.sql"
-        ".ropeproject"
-        ".expert"
-      ];
     };
 
     userKeymaps = [
