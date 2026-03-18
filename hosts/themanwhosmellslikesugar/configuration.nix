@@ -31,20 +31,35 @@
   services.earlyoom.enable = true;
   services.scx.enable = true;
 
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+
+    settings = {
+      Resolve = {
+        DNS = "1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 8.8.8.8#dns.google 8.8.4.4#dns.google";
+        Domains = "~.";
+        DNSStubListener = "yes";
+        DNSSEC = "opportunistic";
+        DNSOverTLS = "true";
+      };
+    };
+  };
 
   networking = {
     hostName = "themanwhosmellslikesugar-MG";
     firewall.enable = true;
-    nameservers = ["8.8.8.8" "1.1.1.1"];
+    nameservers = ["127.0.0.53"];
 
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
+
       plugins = with pkgs; [
         networkmanager-l2tp
       ];
     };
+
+    dhcpcd.enable = false;
   };
 
   # Set your time zone.
