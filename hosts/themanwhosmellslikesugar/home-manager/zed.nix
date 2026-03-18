@@ -26,7 +26,7 @@
 
       wrap_guides = [ 100 ];
 
-      load_direnv = "shell_hook";
+      load_direnv = "direct";
       languages = {
         "Python" = {
           "language_servers" = [ "ty" "ruff" ];
