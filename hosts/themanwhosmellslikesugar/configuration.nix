@@ -135,6 +135,8 @@
 
   environment.sessionVariables = {
     MOZ_USE_XINPUT2 = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = 1;
   };
 
   # Fix for L2TP VPN connection
