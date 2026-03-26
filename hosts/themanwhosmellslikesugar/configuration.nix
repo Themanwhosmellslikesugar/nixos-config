@@ -51,11 +51,21 @@
   networking = {
     hostName = "themanwhosmellslikesugar-MG";
     firewall.enable = true;
+
+    wireless.iwd = {
+      enable = true;
+    };
+
     nameservers = ["127.0.0.53"];
 
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
+
+      wifi = {
+        backend = "iwd";
+        powersave = false;
+      };
 
       plugins = with pkgs; [
         networkmanager-l2tp
