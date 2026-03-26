@@ -33,6 +33,7 @@
     nixd
     nil
 
+    opencode
     comma
     nerd-fonts.hack
     bottom
