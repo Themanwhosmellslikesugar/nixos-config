@@ -26,6 +26,28 @@
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
+
+  boot.blacklistedKernelModules = [
+    # Obscure network protocols
+    "ax25" "netrom" "rose"
+    # Old or rare or insufficiently audited filesystems
+    "adfs" "affs" "bfs" "befs" "cifs" "cramfs" "efs" "exofs"
+    "freevxfs" "gfs2" "hfs" "hfsplus" "hpfs" "jffs2" "jfs" "ksmbd"
+    "minix" "nfsv4" "nfsv3" "nfs" "nilfs2" "omfs" "qnx4" "qnx6" "sysv"
+    "udf" "ufs" "vivid" "floppy" "parport"
+    # Something else
+    "appletalk" "atm" "can" "dccp" "decnet" "econet"
+    "ipx" "n-hdlc" "p8022" "p8023" "psnap"
+    "rds" "sctp" "tipc" "x25"
+    # Unused sensors
+    "kfifo_buf" "cm32181"
+    # Unused io
+    "joydev" # joystick
+    "mac_hid" # mac mouse
+    # FireWire
+    "firewire-core" "firewire-ohci" "firewire-sbp2"
+  ];
+
   boot.kernelParams = [
     "mitigations=off"
     # Avoid touchpad click to tap (clickpad) bug. For more detail see:
