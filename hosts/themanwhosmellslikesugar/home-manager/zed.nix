@@ -70,13 +70,28 @@
         };
       };
 
+      agent_servers = {
+        opencode = {
+          type = "registry";
+        };
+      };
+
       agent = {
         default_profile = "write";
         default_model = {
           provider = "openrouter";
-          model = "openai/gpt-5.1-codex";
+          model = "z-ai/glm-5";
         };
-        favorite_models = [];
+        favorite_models = [
+          {
+            provider = "openrouter";
+            model = "minimax/minimax-m2.7";
+          }
+          {
+            provider = "openrouter";
+            model = "z-ai/glm-5";
+          }
+        ];
         model_parameters = [];
       };
     };
@@ -102,6 +117,10 @@
           ];
           "ctrl-shift-alt-i" = [
             "editor::SortLinesCaseInsensitive"
+            { }
+          ];
+          "ctrl-shift-alt-l" = [
+            "editor::ConvertToLowerCase"
             { }
           ];
         };
