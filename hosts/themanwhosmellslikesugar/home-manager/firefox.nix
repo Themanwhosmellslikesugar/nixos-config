@@ -32,6 +32,7 @@
         "trailhead.firstrun.didSeeAboutWelcome" = true;
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.addedImportButton" = true;
+        "browser.ai.enabled" = false;
 
         # Disable crappy home activity stream page
         "browser.newtabpage.activity-stream.feeds.topsites" = false;
@@ -90,10 +91,16 @@
 
         "privacy.trackingprotection.pbmode.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.pbmode" = true;
+
         "browser.contentblocking.category" = "strict";
 
         # DevTools
         "devtools.toolbox.host" = "right";
+
+        # Experimental
+        "sidebar.revamp" = true;
       };
     };
   };
