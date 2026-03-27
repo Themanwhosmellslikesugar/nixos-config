@@ -115,6 +115,12 @@
   programs.fish.enable = true;
   programs.firefox.enable = true;
 
+  programs.throne = {
+    enable = true;
+
+    tunMode.enable = true;
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

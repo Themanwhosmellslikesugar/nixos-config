@@ -42,7 +42,6 @@
     onlyoffice-desktopeditors
     telegram-desktop
     chromium
-    v2rayn
     krita
   ];
 
