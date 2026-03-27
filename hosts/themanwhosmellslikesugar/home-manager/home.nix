@@ -54,6 +54,7 @@
       user.name = "Dmitrii Ivanko";
       init.defaultBranch = "master";
       branch.sort = "-committerdate";
+      merge.conflictstyle = "zdiff3";
     };
     enable = true;
   };
