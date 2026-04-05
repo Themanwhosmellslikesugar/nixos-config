@@ -163,6 +163,19 @@
     "strongswan.conf".text = "";
   };
 
+  services.zapret-discord-youtube = {
+    enable = true;
+    configName = "general(ALT)";
+
+    gameFilter = "null";
+
+    listGeneral = [ ];
+    listExclude = [ ];
+
+    ipsetAll = [ "192.168.1.0/24" "10.0.0.1" ];
+    ipsetExclude = [ "203.0.113.0/24" ];
+  };
+
   home-manager.backupFileExtension = "backup";
 
   home-manager.extraSpecialArgs = { inherit inputs; };

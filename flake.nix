@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,7 +19,7 @@
   };
 
   outputs =
-    { nixpkgs, ... }@inputs:
+    { nixpkgs, zapret-discord-youtube, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -33,6 +34,7 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
+          zapret-discord-youtube.nixosModules.default
         ];
       };
 
