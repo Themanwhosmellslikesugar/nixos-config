@@ -35,6 +35,7 @@
     nil
 
     opencode
+    obs-studio
     comma
     nerd-fonts.hack
     bottom
