@@ -1,12 +1,12 @@
 { ... }:
 
 let
-  selectedModel = "openrouter/minimax-m2.7";
+  selectedModel = "openrouter/minimax/minimax-m2.7";
 
   modelSet = { model = selectedModel; };
 in
 {
-  xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
+  xdg.configFile."opencode/oh-my-openagent.jsonc".text = builtins.toJSON {
     "$schema" = "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json";
 
     agents = {
