@@ -62,13 +62,14 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
-      "*" = {
-        userKnownHostsFile = "~/.ssh/known_hosts";
-        controlMaster = "no";
-        controlPersist = "no";
-        controlPath = "~/.ssh/master-%r@%n:%p";
-        identityFile = [
+
+    settings = {
+      "Host *" = {
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPersist = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        IdentityFile = [
           "~/.ssh/id_ed25519"
           "~/.ssh/id_radius_v2_ed25519"
           "~/.ssh/id_rsa"
@@ -76,7 +77,7 @@
           "~/.ssh/id_ed25519_secondary"
           "~/.ssh/honey_property"
         ];
-        identitiesOnly = true;
+        IdentitiesOnly = "yes";
       };
     };
   };
