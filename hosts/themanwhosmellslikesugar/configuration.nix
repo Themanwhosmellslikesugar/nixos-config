@@ -39,24 +39,39 @@
 
     settings = {
       Resolve = {
-        DNS = "1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 8.8.8.8#dns.google 8.8.4.4#dns.google";
+        DNS = "1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 9.9.9.9#dns.quad9.net";
+        FallbackDNS = "8.8.8.8#dns.google 8.8.4.4#dns.google";
         Domains = "~.";
         DNSStubListener = "yes";
         DNSSEC = "opportunistic";
-        DNSOverTLS = "true";
+        DNSOverTLS = "opportunistic";
+        MulticastDNS = "true";
+        LLMNR = "true";
       };
     };
   };
 
   networking = {
     hostName = "themanwhosmellslikesugar-MG";
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [ 5353 ];
+    };
 
     wireless.iwd = {
       enable = true;
-    };
 
-    nameservers = ["127.0.0.53"];
+      settings = {
+        Settings = {
+          AutoConnect = true;
+        };
+
+        Network = {
+          EnableIPv6 = true;
+          NameResolvingService = "systemd";
+        };
+      };
+    };
 
     networkmanager = {
       enable = true;
