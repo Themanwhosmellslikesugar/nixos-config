@@ -179,7 +179,7 @@
 
   services.zapret-discord-youtube = {
     enable = true;
-    configName = "general(ALT10)";
+    configName = "general (ALT12)";
 
     gameFilter = "null";
 
