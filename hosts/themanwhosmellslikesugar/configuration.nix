@@ -132,7 +132,10 @@
   programs.throne = {
     enable = true;
 
-    tunMode.enable = true;
+    tunMode = {
+      enable = true;
+      setuid = true;
+    };
   };
 
   # Enable CUPS to print documents.
