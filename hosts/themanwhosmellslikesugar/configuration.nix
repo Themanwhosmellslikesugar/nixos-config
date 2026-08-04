@@ -181,7 +181,7 @@
   };
 
   services.zapret-discord-youtube = {
-    enable = true;
+    enable = false;
     configName = "general (ALT12)";
 
     gameFilter = "null";
