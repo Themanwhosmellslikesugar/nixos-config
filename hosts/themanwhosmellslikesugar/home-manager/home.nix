@@ -44,6 +44,7 @@
     telegram-desktop
     chromium
     krita
+    android-tools
   ];
 
   fonts.fontconfig.enable = true;
