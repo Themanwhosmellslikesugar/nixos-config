@@ -1,13 +1,14 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, inputs, ... }:
-
-{
+# Shared system settings for this user's machines.
+{pkgs, ...}: {
   imports = [
-    inputs.home-manager.nixosModules.default
+    ./desktop.nix
   ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Compatibility baseline for this configuration; keep it when upgrading NixOS.
+  system.stateVersion = "25.05";
 
   nix = {
     gc = {
@@ -24,15 +25,17 @@
     };
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.tmp = {
+    cleanOnBoot = true;
+    useTmpfs = true;
+  };
+
+  zramSwap.enable = true;
 
   systemd.services.NetworkManager-wait-online.enable = false;
   systemd.services.systemd-udev-settle.enable = false;
 
   services.earlyoom.enable = true;
-  services.scx.enable = true;
 
   services.resolved = {
     enable = true;
@@ -52,10 +55,9 @@
   };
 
   networking = {
-    hostName = "themanwhosmellslikesugar-MG";
     firewall = {
       enable = true;
-      allowedUDPPorts = [ 5353 ];
+      allowedUDPPorts = [5353];
     };
 
     wireless.iwd = {
@@ -108,22 +110,6 @@
     LC_TIME = "ru_RU.UTF-8";
   };
 
-  # bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.plasma-login-manager.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us,ru";
-    variant = "";
-  };
-
   virtualisation.docker.enable = true;
 
   programs.nix-ld.enable = true;
@@ -136,19 +122,6 @@
       enable = true;
       setuid = true;
     };
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
   };
 
   users.users.themanwhosmellslikesugar = {
@@ -169,12 +142,6 @@
     vim
   ];
 
-  environment.sessionVariables = {
-    MOZ_USE_XINPUT2 = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    NIXOS_OZONE_WL = 1;
-  };
-
   # Fix for L2TP VPN connection
   environment.etc = {
     "strongswan.conf".text = "";
@@ -186,24 +153,10 @@
 
     gameFilter = "null";
 
-    listGeneral = [ ];
-    listExclude = [ ];
+    listGeneral = [];
+    listExclude = [];
 
-    ipsetAll = [ "192.168.1.0/24" "10.0.0.1" ];
-    ipsetExclude = [ "203.0.113.0/24" ];
+    ipsetAll = ["192.168.1.0/24" "10.0.0.1"];
+    ipsetExclude = ["203.0.113.0/24"];
   };
-
-  home-manager.backupFileExtension = "backup";
-
-  home-manager.extraSpecialArgs = { inherit inputs; };
-  home-manager.users.themanwhosmellslikesugar =
-    { ... }:
-    {
-      imports = [
-        ./home-manager/home.nix
-        inputs.plasma-manager.homeModules.plasma-manager
-      ];
-    };
-
-  system.stateVersion = "25.05";
 }

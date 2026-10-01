@@ -28,50 +28,56 @@
     };
   };
 
-  outputs =
-    { nixpkgs, zapret-discord-youtube, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      formatter.${system} = pkgs.alejandra;
-
-      nixosConfigurations."themanwhosmellslikesugar-MG" = nixpkgs.lib.nixosSystem {
+  outputs = {
+    nixpkgs,
+    zapret-discord-youtube,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    homeModules = [
+      ./general/home-manager/home.nix
+      inputs.plasma-manager.homeModules.plasma-manager
+    ];
+    mkHost = hostModule:
+      nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
         };
         modules = [
-          ./hosts/themanwhosmellslikesugar/configuration.nix
-          ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
+          ./general/configuration.nix
+          hostModule
           inputs.disko.nixosModules.disko
-          ./hosts/themanwhosmellslikesugar/disko.nix
+          inputs.home-manager.nixosModules.default
           zapret-discord-youtube.nixosModules.default
           {
-            home-manager.sharedModules = [
-              inputs.nix-index-database.homeModules.default
-            ];
+            home-manager = {
+              backupFileExtension = "backup";
+              extraSpecialArgs = {inherit inputs;};
+              sharedModules = [inputs.nix-index-database.homeModules.default];
+              users.themanwhosmellslikesugar.imports = homeModules;
+            };
           }
         ];
       };
+  in {
+    formatter.${system} = pkgs.alejandra;
 
-      homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+    nixosConfigurations."themanwhosmellslikesugar-MG" = mkHost ./current;
 
-        modules = [
-          ./hosts/themanwhosmellslikesugar/home-manager/home.nix
-          inputs.plasma-manager.homeModules.plasma-manager
-          inputs.nix-index-database.homeModules.default
-        ];
+    homeConfigurations.themanwhosmellslikesugar = inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
 
-        extraSpecialArgs = { inherit inputs; };
-      };
+      modules = homeModules ++ [inputs.nix-index-database.homeModules.default];
 
-      devShells.${system}.default = pkgs.mkShell {
-        packages = with pkgs; [
-          nil
-          nixd
-        ];
-      };
+      extraSpecialArgs = {inherit inputs;};
     };
+
+    devShells.${system}.default = pkgs.mkShell {
+      packages = with pkgs; [
+        nil
+        nixd
+      ];
+    };
+  };
 }
