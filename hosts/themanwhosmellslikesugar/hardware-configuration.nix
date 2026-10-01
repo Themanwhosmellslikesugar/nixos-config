@@ -62,26 +62,9 @@
     useTmpfs = true;
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c72bbfbc-0fdf-4c67-87e1-30bc9748b3f8";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/41D7-DB05";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
+  # Disk layout, fileSystems and swapDevices are defined in disko.nix.
   zramSwap.enable = true;
   services.scx.enable = true;
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/78a3c734-3807-4edf-b7cb-cc15d1b46f45"; }
-  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

@@ -6,6 +6,11 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +44,8 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
+          inputs.disko.nixosModules.disko
+          ./hosts/themanwhosmellslikesugar/disko.nix
           zapret-discord-youtube.nixosModules.default
           {
             home-manager.sharedModules = [
