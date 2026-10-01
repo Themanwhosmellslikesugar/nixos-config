@@ -27,15 +27,12 @@
     lookAndFeel = "org.kde.breezedark.desktop";
   };
 
-  programs.plasma.input.touchpads = [
-    {
-      enable = true;
-      name = "GXTP7863:00 27C6:01E0 Touchpad";
-      vendorId = "27c6";
-      productId = "01e0";
-      naturalScroll = true;
-    }
-  ];
+  programs.plasma.configFile."kcminputrc" = {
+    "Libinput/Defaults/Touchpad" = {
+      Enabled = true;
+      NaturalScroll = true;
+    };
+  };
 
   programs.plasma.kwin.nightLight = {
     enable = true;
