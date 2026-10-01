@@ -8,7 +8,7 @@
     ./plasma.nix
     ./firefox.nix
     ./zed.nix
-    ./opencode.nix
+    ./codex.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -34,7 +34,6 @@
     nixd
     nil
 
-    opencode
     obs-studio
     comma
     nerd-fonts.hack

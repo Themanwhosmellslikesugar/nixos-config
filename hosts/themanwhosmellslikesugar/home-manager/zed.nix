@@ -70,12 +70,6 @@
         };
       };
 
-      agent_servers = {
-        opencode = {
-          type = "registry";
-        };
-      };
-
       agent = {
         default_profile = "write";
         default_model = {
