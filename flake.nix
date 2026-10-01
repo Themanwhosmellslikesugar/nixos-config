@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +40,11 @@
           ./hosts/themanwhosmellslikesugar/configuration.nix
           ./hosts/themanwhosmellslikesugar/hardware-configuration.nix
           zapret-discord-youtube.nixosModules.default
+          {
+            home-manager.sharedModules = [
+              inputs.nix-index-database.homeModules.default
+            ];
+          }
         ];
       };
 
@@ -44,6 +54,7 @@
         modules = [
           ./hosts/themanwhosmellslikesugar/home-manager/home.nix
           inputs.plasma-manager.homeModules.plasma-manager
+          inputs.nix-index-database.homeModules.default
         ];
 
         extraSpecialArgs = { inherit inputs; };

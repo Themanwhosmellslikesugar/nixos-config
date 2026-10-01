@@ -35,7 +35,6 @@
     nil
 
     obs-studio
-    comma
     nerd-fonts.hack
     bottom
     obsidian
@@ -47,6 +46,12 @@
   ];
 
   fonts.fontconfig.enable = true;
+
+  programs.nix-index = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.nix-index-database.comma.enable = true;
 
   programs.git = {
     settings = {
