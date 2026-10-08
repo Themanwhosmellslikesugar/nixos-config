@@ -23,6 +23,7 @@
     kdePackages.kcalc
     kdePackages.dragon
     kdePackages.juk
+    kdePackages.ktorrent
 
     gnumake
     openvpn
