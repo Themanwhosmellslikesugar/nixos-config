@@ -22,7 +22,6 @@
   home.packages = with pkgs; [
     # KDE
     kdePackages.kcalc
-    kdePackages.dragon
     kdePackages.juk
     kdePackages.ktorrent
 
@@ -37,6 +36,7 @@
     nil
 
     obs-studio
+    vlc
     nerd-fonts.hack
     bottom
     obsidian
@@ -145,12 +145,12 @@
 
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
-    "video/mp4" = [ "org.kde.dragon.desktop" ];
-    "video/x-matroska" = [ "org.kde.dragon.desktop" ];
-    "video/x-msvideo" = [ "org.kde.dragon.desktop" ];
-    "video/avi" = [ "org.kde.dragon.desktop" ];
-    "video/mpeg" = [ "org.kde.dragon.desktop" ];
-    "video/webm" = [ "org.kde.dragon.desktop" ];
-    "video/quicktime" = [ "org.kde.dragon.desktop" ];
+    "video/mp4" = [ "vlc.desktop" ];
+    "video/x-matroska" = [ "vlc.desktop" ];
+    "video/x-msvideo" = [ "vlc.desktop" ];
+    "video/avi" = [ "vlc.desktop" ];
+    "video/mpeg" = [ "vlc.desktop" ];
+    "video/webm" = [ "vlc.desktop" ];
+    "video/quicktime" = [ "vlc.desktop" ];
   };
 }
