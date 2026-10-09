@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -39,12 +40,30 @@
     nerd-fonts.hack
     bottom
     obsidian
+    qownnotes
     onlyoffice-desktopeditors
     telegram-desktop
     chromium
     krita
     android-tools
   ];
+
+  programs.plasma.configFile."PBE/QOwnNotes.conf" = {
+    General.notesPath = {
+      value = "${config.home.homeDirectory}/Documents/mind-db";
+      immutable = false;
+    };
+    appMetrics = {
+      disableTracking = {
+        value = true;
+        immutable = false;
+      };
+      disableAppHeartbeat = {
+        value = true;
+        immutable = false;
+      };
+    };
+  };
 
   fonts.fontconfig.enable = true;
 
