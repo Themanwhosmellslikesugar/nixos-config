@@ -8,6 +8,7 @@
     sandbox_mode = "workspace-write";
     approval_policy = "on-request";
     approvals_reviewer = "auto_review";
+    features.prevent_idle_sleep = true;
     mcp_servers.codegraph = {
       command = "${config.home.homeDirectory}/.local/bin/codegraph";
       args = ["serve" "--mcp"];

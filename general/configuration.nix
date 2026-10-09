@@ -1,5 +1,10 @@
 # Shared system settings for this user's machines.
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./desktop.nix
   ];
