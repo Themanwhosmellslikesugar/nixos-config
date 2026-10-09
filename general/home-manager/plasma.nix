@@ -5,6 +5,16 @@
   programs.plasma.enable = true;
   programs.plasma.immutableByDefault = true;
 
+  programs.plasma.panels = [
+    {
+      location = "bottom";
+      alignment = "center";
+      lengthMode = "fit";
+      hiding = "autohide";
+      floating = true;
+    }
+  ];
+
   programs.plasma.input.keyboard.layouts = [
     {
       layout = "us";
