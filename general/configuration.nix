@@ -1,7 +1,5 @@
 # Shared system settings for this user's machines.
 {
-  config,
-  lib,
   pkgs,
   ...
 }: {
