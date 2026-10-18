@@ -8,14 +8,13 @@
   nixpkgs.overlays = [inputs.nix-cachyos-kernel.overlays.pinned];
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
 
-  # Caches documented at https://github.com/xddxdd/nix-cachyos-kernel#binary-cache
+  # Keep cache.nixos.org (added by NixOS) and the CachyOS mirror.
+  # https://github.com/xddxdd/nix-cachyos-kernel#alternative-binary-cache
   nix.settings = {
     substituters = [
-      "https://attic.xuyh0120.win/lantian"
       "https://cache.xinux.uz"
     ];
     trusted-public-keys = [
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
     ];
   };
