@@ -39,6 +39,7 @@
     vlc
     nerd-fonts.hack
     bottom
+    anki
     obsidian
     qownnotes
     onlyoffice-desktopeditors
