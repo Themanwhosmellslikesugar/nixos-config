@@ -18,7 +18,7 @@
       "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
     ];
   };
-  services.scx.enable = true;
+  services.scx-loader.enable = true;
 
   boot.kernelParams = [
     "mitigations=off"
